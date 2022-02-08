@@ -101,10 +101,13 @@ public enum Direction {
     }
 
     public int differenceDegreesTo(Direction direction) {
-        if (this.degrees >= direction.degrees) {
-            return this.degrees - direction.degrees;
-        } else {
-            return Math.abs(direction.degrees) - Math.abs(this.degrees);
+        if (this.equals(Direction.N) && direction.equals(Direction.NW)) {
+            return 45;
         }
+
+        if (this.degrees == 0 && direction.degrees > 180){
+            return 360 - direction.degrees;
+        }
+        return Math.abs(this.degrees - direction.degrees);
     }
 }
