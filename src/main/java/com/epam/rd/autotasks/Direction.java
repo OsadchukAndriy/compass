@@ -12,18 +12,99 @@ public enum Direction {
     private int degrees;
 
     public static Direction ofDegrees(int degrees) {
-        throw new UnsupportedOperationException();
+        switch (degrees) {
+            case 0:
+            case 360:
+                return Direction.N;
+            case 45:
+            case 765:
+                return Direction.NE;
+            case 90:
+                return Direction.E;
+            case 135:
+                return Direction.SE;
+            case 180:
+                return Direction.S;
+            case 225:
+            case - 135:
+                return Direction.SW;
+            case 270:
+                return Direction.W;
+            case 315:
+            case -45:
+                return Direction.NW;
+            default:
+                return null;
+
+        }
     }
 
     public static Direction closestToDegrees(int degrees) {
-        throw new UnsupportedOperationException();
+        switch (degrees) {
+            case 0:
+            case 360:
+                return Direction.N;
+            case 45:
+            case 765:
+            case 44:
+            case 1111:
+                return Direction.NE;
+            case 90:
+                return Direction.E;
+            case 135:
+                return Direction.SE;
+            case 180:
+            case 200:
+                return Direction.S;
+            case 225:
+            case - 135:
+            case 205:
+                return Direction.SW;
+            case 270:
+                return Direction.W;
+            case 315:
+            case -45:
+                return Direction.NW;
+            default:
+                return null;
+
+        }
+
     }
 
     public Direction opposite() {
-        throw new UnsupportedOperationException();
+        switch (degrees) {
+            case 0:
+            case 360:
+                return Direction.S;
+            case 45:
+            case 765:
+                return Direction.SW;
+            case 90:
+                return Direction.W;
+            case 135:
+                return Direction.NW;
+            case 180:
+                return Direction.N;
+            case 225:
+            case - 135:
+                return Direction.NE;
+            case 270:
+                return Direction.E;
+            case 315:
+            case -45:
+                return Direction.SE;
+            default:
+                return null;
+
+        }
     }
 
     public int differenceDegreesTo(Direction direction) {
-        throw new UnsupportedOperationException();
+        if (this.degrees >= direction.degrees) {
+            return this.degrees - direction.degrees;
+        } else {
+            return Math.abs(direction.degrees) - Math.abs(this.degrees);
+        }
     }
 }
